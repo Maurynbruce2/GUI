@@ -11,36 +11,38 @@ class TestInput:
 
         self.topframe = tkinter.Frame(self.main_window)
         self.midframe = tkinter.Frame(self.main_window)
+        self.thirdframe = tkinter.Frame(self.main_window)
+        self.fouthframe = tkinter.Frame(self.main_window)
         self.bottomframe = tkinter.Frame(self.main_window)
 
         # Create Entries
 
-        self.test1entry = tkinter.Label(self.topframe, text = 'Enter the score for test 1:')
+        self.test1label = tkinter.Label(self.topframe, text = 'Enter the score for test 1:')
         self.entry1 = tkinter.Entry(self.topframe, width = 10)
 
-        self.test2entry = tkinter.Label(self.topframe, text = 'Enter the score for test 2:')
-        self.entry2 = tkinter.Entry(self.topframe, width = 10)
+        self.test2label = tkinter.Label(self.midframe, text = 'Enter the score for test 2:')
+        self.entry2 = tkinter.Entry(self.midframe, width = 10)
 
-        self.test3entry = tkinter.Label(self.topframe, text = 'Enter the score for test 3:')
-        self.entry3 = tkinter.Entry(self.topframe, width = 10)
+        self.test3label = tkinter.Label(self.thirdframe, text = 'Enter the score for test 3:')
+        self.entry3 = tkinter.Entry(self.thirdframe, width = 10)
 
         # Pack Entries 
 
-        self.test1entry.pack()
-        self.entry1.pack()
+        self.test1label.pack(side='left')
+        self.entry1.pack(side='left')
 
-        self.test2entry.pack()
-        self.entry2.pack()
+        self.test2label.pack(side='left')
+        self.entry2.pack(side='left')
 
-        self.test3entry.pack()
-        self.entry3.pack()
+        self.test3label.pack(side='left')
+        self.entry3.pack(side='left')
 
         # Create Labels for Average
 
         self.average_var = tkinter.StringVar()
 
-        self.desc_label = tkinter.Label(self.midframe,text = 'Average:')
-        self.average = tkinter.Label(self.midframe, textvariable=self.average_var)
+        self.desc_label = tkinter.Label(self.fouthframe,text = 'Average:')
+        self.average = tkinter.Label(self.fouthframe, textvariable=self.average_var)
 
         # Pack Labels for Average
 
@@ -49,6 +51,8 @@ class TestInput:
 
         self.topframe.pack(side='top')
         self.midframe.pack()
+        self.thirdframe.pack()
+        self.fouthframe.pack()
         self.bottomframe.pack(side='bottom')
 
         # Create Buttons 
@@ -64,11 +68,11 @@ class TestInput:
         tkinter.mainloop()
 
     def convert(self): 
-        total_score = float(self.entry1.get() + self.entry2.get() + self.entry3.get())
+        total_score = float(self.entry1.get()) + float(self.entry2.get()) + float(self.entry3.get())
 
-        average =(total_score/3)
+        avg =round(total_score/3,2)
 
-        self.average_var.set(average)
+        self.average_var.set(avg)
 
 test_average = TestInput()
 print('I am done')
